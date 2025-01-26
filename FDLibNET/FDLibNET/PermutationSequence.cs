@@ -5,6 +5,7 @@
 // @date: 22.1.2025
 
 using System.Diagnostics;
+
 using IndexType = System.Int32;
 using IndicesType = System.Int32[];
 
@@ -13,8 +14,8 @@ namespace FDLibNET {
   //----------------------------------------------------------------------------
   // @class PermutationSequence
   // @brief Helper class to track the pivoting during the QR factorization.
-  public class PermutationSequence(int size)
-  {
+  public class PermutationSequence(int size) {
+
     IndicesType m_indices = new IndexType[size];
 
     public IndicesType Indices() {
