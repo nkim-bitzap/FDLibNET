@@ -1,6 +1,6 @@
 <h3>
 <p align="center">
-  FDLibNET - A force-density library re-written for .NET.
+  FDLibNET - A force-density library re-written for .NET
 </p>
 </h3>
 
