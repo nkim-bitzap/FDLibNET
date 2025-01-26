@@ -183,6 +183,7 @@ namespace FDLibNET {
   // @note This stuff is minimal and could be performed inline, i leave this
   //   as-is however for potential extensions in future.
   public class HouseholderSequence(MatrixType vectors, VectorType coeffs) {
+
     MatrixType m_vectors = vectors;
     VectorType m_coeffs = coeffs;
     int m_length = vectors.Diagonal().Count;
@@ -190,6 +191,7 @@ namespace FDLibNET {
     bool m_trans = false;
 
     //--------------------------------------------------------------------------
+
     public bool Trans() {
       return m_trans;
     }
@@ -216,8 +218,6 @@ namespace FDLibNET {
 
       return MatrixBlock.ColumnTail(m_vectors, k, tail);
     }
-
-    //--------------------------------------------------------------------------
 
     public MatrixType ApplyOnTheLeft(MatrixType matrix) {
 
