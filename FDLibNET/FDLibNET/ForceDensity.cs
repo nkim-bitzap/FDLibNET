@@ -68,6 +68,16 @@ namespace FDLibNET {
 
         isFixed = false;
       }
+
+      public Vector<double> AsCoordinateVector() {
+        var vec = Vector<double>.Build.Dense(3);
+
+        vec[0] = x;
+        vec[1] = y;
+        vec[2] = z;
+      
+        return vec;
+      }
     }
 
     //--------------------------------------------------------------------------

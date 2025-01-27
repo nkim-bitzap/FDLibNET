@@ -35,18 +35,19 @@ class Program {
     Console.WriteLine("'Program::Test1'");
 
     ForceDensity.PointInfo[] pointInfos = [
-      new ForceDensity.PointInfo(-1, -1, 1), // fixed
+      new ForceDensity.PointInfo(-1, -1, 1), // fixed, index 0
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(-1, 1, 3),  // fixed
+      new ForceDensity.PointInfo(-1, 1, 3),  // fixed, index 2
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(1, 1, 1),   // fixed
+      new ForceDensity.PointInfo(1, 1, 1),   // fixed, inded 4
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(1, -1, 3),  // fixed
+      new ForceDensity.PointInfo(1, -1, 3),  // fixed, index 6
       new ForceDensity.PointInfo(),
       new ForceDensity.PointInfo()
     ];
 
-    // Edges (point indices must match the order in 'pointInfos').
+    // Edges (point indices must match the order in 'pointInfos'). The order
+    // of the edges themself within the container is not important.
     ForceDensity.EdgeInfo[] edgeInfos = [
       new ForceDensity.EdgeInfo(0, 1),
       new ForceDensity.EdgeInfo(1, 2),
@@ -69,6 +70,15 @@ class Program {
       Console.WriteLine("Failed to solve the linear system.");
     }
     else {
+      // NOTE, the solution will have 0-entries for all fixed points. There-
+      // fore, use the original input data and post-patch explicitly into the
+      // result for the sake of completeness.
+      for (int i = 0; i < pointInfos.Length; ++i) {
+        var pi = pointInfos[i];
+
+        if (pi.isFixed) x.SetRow(i, pi.AsCoordinateVector());
+      }
+
       Console.WriteLine("x:");
       Console.WriteLine(x);
     }
@@ -153,6 +163,14 @@ class Program {
       Console.WriteLine("Failed to solve the linear system.");
     }
     else {
+      // NOTE, the solution will have 0-entries for all fixed points. There-
+      // fore, use the original input data and post-patch explicitly into the
+      // result for the sake of completeness.
+      x.SetRow(0, p0.AsCoordinateVector());
+      x.SetRow(2, p2.AsCoordinateVector());
+      x.SetRow(4, p4.AsCoordinateVector());
+      x.SetRow(6, p6.AsCoordinateVector());
+
       Console.WriteLine("x:");
       Console.WriteLine(x);
     }
@@ -206,6 +224,15 @@ class Program {
       Console.WriteLine("Failed to solve the linear system.");
     }
     else {
+      // NOTE, the solution will have 0-entries for all fixed points. There-
+      // fore, use the original input data and post-patch explicitly into the
+      // result for the sake of completeness.
+      for (int i = 0; i < pointInfos.Length; ++i) {
+        var pi = pointInfos[i];
+
+        if (pi.isFixed) x.SetRow(i, pi.AsCoordinateVector());
+      }
+
       Console.WriteLine("x:");
       Console.WriteLine(x);
     }
@@ -254,6 +281,15 @@ class Program {
       Console.WriteLine("Failed to solve the linear system.");
     }
     else {
+      // NOTE, the solution will have 0-entries for all fixed points. There-
+      // fore, use the original input data and post-patch explicitly into the
+      // result for the sake of completeness.
+      for (int i = 0; i < pointInfos.Length; ++i) {
+        var pi = pointInfos[i];
+
+        if (pi.isFixed) x.SetRow(i, pi.AsCoordinateVector());
+      }
+
       Console.WriteLine("x:");
       Console.WriteLine(x);
     }
