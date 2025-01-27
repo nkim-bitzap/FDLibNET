@@ -208,7 +208,7 @@ namespace FDLibNET {
         Matrix<double>.Build.Sparse(numPoints, 3);
 
       Matrix<double> p =
-        Matrix<double>.Build.Sparse(numPoints, 3);
+        Matrix<double>.Build.Dense(numPoints, 3);
 
       for (int i = 0; i < numPoints; ++i) {
         p[i, 0] = LoadX + Points[i].loadX;

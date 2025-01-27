@@ -56,10 +56,6 @@ namespace FDLibNET {
       Debug.Assert(0 <= column && column < numColumns);
       Debug.Assert(0 <= tailSize && tailSize <= numRows);
 
-      if (0 == numRows || 0 == numColumns) {
-        return Vector<double>.Build.Dense(0);
-      }
-
       return matrix.Column(column).SubVector(
         numRows - tailSize, tailSize);
     }
