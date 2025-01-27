@@ -6,21 +6,24 @@
 
 ```
 
-    // Basic example as found in Program.cs::Test1()
+    // Basic example of usage as seen in Program.cs::Test1(). Usually starts
+    // with the points.
 
     ForceDensity.PointInfo[] pointInfos = [
-      new ForceDensity.PointInfo(-1, -1, 1), // fixed
+      new ForceDensity.PointInfo(-1, -1, 1), // fixed, index 0
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(-1, 1, 3),  // fixed
+      new ForceDensity.PointInfo(-1, 1, 3),  // fixed, index 2
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(1, 1, 1),   // fixed
+      new ForceDensity.PointInfo(1, 1, 1),   // fixed, inded 4
       new ForceDensity.PointInfo(),
-      new ForceDensity.PointInfo(1, -1, 3),  // fixed
+      new ForceDensity.PointInfo(1, -1, 3),  // fixed, index 6
       new ForceDensity.PointInfo(),
       new ForceDensity.PointInfo()
     ];
 
-    // Edges (point indices must match the order in 'pointInfos').
+    // Edges (point indices must match the order in 'pointInfos'). The order
+    // of the edges themself within the container is not important.
+
     ForceDensity.EdgeInfo[] edgeInfos = [
       new ForceDensity.EdgeInfo(0, 1),
       new ForceDensity.EdgeInfo(1, 2),
@@ -43,7 +46,16 @@
       Console.WriteLine("Failed to solve the linear system.");
     }
     else {
-      Console.WriteLine("x:");
+      // NOTE, the solution will have 0-entries for all fixed points. There-
+      // fore, use the original input data and post-patch explicitly into the
+      // result for the sake of completeness.
+
+      for (int i = 0; i < pointInfos.Length; ++i) {
+        var pi = pointInfos[i];
+
+        if (pi.isFixed) x.SetRow(i, pi.AsCoordinateVector());
+      }
+
       Console.WriteLine(x);
     }
 
