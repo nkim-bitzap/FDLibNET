@@ -56,8 +56,7 @@ namespace FDLibNET {
       }
 
       // Convenience ctor to create 'free' points.
-      public PointInfo()
-      {
+      public PointInfo() {
         x = 0.0;
         y = 0.0;
         z = 0.0;
