@@ -5,9 +5,6 @@ namespace UnitTests;
 
 public class MatrixBlock_MatrixPart {
 
-    readonly Vector<double> sampleVector =
-      Vector<double>.Build.DenseOfArray([ 1, 3, 0, -7, 4, 2]);
-
     readonly Matrix<double> sampleMatrix =
       Matrix<double>.Build.DenseOfColumns([
         [ 0, 2, 0, 1, -4 ],
