@@ -101,6 +101,19 @@ namespace FDLibNET {
 
     //--------------------------------------------------------------------------
 
+    public static MatrixType TopRows(MatrixType matrix, int numRows) {
+      return MatrixPart(matrix, 0, 0, numRows, matrix.ColumnCount);
+    }
+
+    //--------------------------------------------------------------------------
+
+    public static MatrixType BottomRows(MatrixType matrix, int numRows) {
+      return MatrixPart(
+        matrix, matrix.RowCount - numRows, 0, numRows, matrix.ColumnCount);
+    }
+
+    //--------------------------------------------------------------------------
+
     public static MatrixType TopLeftPart(MatrixType matrix,
                                          int numRows,
                                          int numColumns)
@@ -119,19 +132,6 @@ namespace FDLibNET {
                         matrix.ColumnCount - numColumns,
                         numRows,
                         numColumns);
-    }
-
-    //--------------------------------------------------------------------------
-
-    public static MatrixType TopRows(MatrixType matrix, int numRows) {
-      return MatrixPart(matrix, 0, 0, numRows, matrix.ColumnCount);
-    }
-
-    //--------------------------------------------------------------------------
-
-    public static MatrixType BottomRows(MatrixType matrix, int numRows) {
-      return MatrixPart(
-        matrix, matrix.RowCount - numRows, 0, numRows, matrix.ColumnCount);
     }
 
     //--------------------------------------------------------------------------
