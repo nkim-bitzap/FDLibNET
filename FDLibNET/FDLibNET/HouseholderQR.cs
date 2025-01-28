@@ -93,6 +93,7 @@ namespace FDLibNET {
       Debug.Assert(1 <= numPartColumns &&
                    numPartColumns <= numColumns - startColumn);
 
+
       return matrix.SubMatrix(
         startRow, numPartRows, startColumn, numPartColumns);
     }
