@@ -63,14 +63,15 @@ namespace FDLibNET {
     //--------------------------------------------------------------------------
 
     public static double MaxTailValue(VectorType array,
-                                      int tail,
+                                      int tailSize,
                                       ref int maxIndex)
     {
-      Debug.Assert(0 < tail && tail <= array.Count);
+      Debug.Assert(0 < tailSize && tailSize <= array.Count);
 
-      var tailVector = array.SubVector(array.Count - tail, tail);
+      var tailVector =
+        array.SubVector(array.Count - tailSize, tailSize);
+
       maxIndex = tailVector.MaximumIndex();
-
       return tailVector[maxIndex];
     }
 
