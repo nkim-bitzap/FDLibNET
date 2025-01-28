@@ -128,11 +128,6 @@ public class MatrixBlock_MatrixPart {
 
       var part = MatrixBlock.MatrixPart(matrix, 0, 0, 2, 2);
 
-      //   [ 0, 2, 0, 1, -4 ],
-      //   [-3, 3, -1, 0, 1],
-      //   [1, 0, 0, 1, 3],
-      //   [4, 1, 2, 0, 3]
-
       Assert.Equal(2, part.RowCount);
       Assert.Equal(2, part.ColumnCount);
       Assert.Equal(0, part[0, 0]);

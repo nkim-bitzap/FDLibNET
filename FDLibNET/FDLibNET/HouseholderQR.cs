@@ -327,8 +327,6 @@ namespace FDLibNET {
       int rows = m_qr.RowCount;
       int cols = m_qr.ColumnCount;
       int size = m_qr.Diagonal().Count;
-  
-      double[] m_temp = new double[cols];
 
       int[] m_colsTranspositions = new int[cols];
       int number_of_transpositions = 0;
@@ -367,7 +365,8 @@ namespace FDLibNET {
         // Track the number of meaningful pivots but don't stop the decomposi-
         // tion to make sure that the initial matrix is properly reproduced.
         if (m_nonzero_pivots == size
-        && biggest_col_sq_norm < threshold_helper * (rows - k)) {
+        && biggest_col_sq_norm < threshold_helper * (rows - k))
+        {
           m_nonzero_pivots = k;
         }
 
