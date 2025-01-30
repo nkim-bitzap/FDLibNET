@@ -465,7 +465,6 @@ class Program {
   //   the input matrices. However, the variance is in the ballpark of 0.0001.
   //
   // @note For internal (factorization) testing only, DO NOT USE AS SHOWN!
-
   static void Test6() {
     Console.WriteLine("'Program::Test6'");
   
