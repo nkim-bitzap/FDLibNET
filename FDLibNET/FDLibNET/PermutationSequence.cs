@@ -18,12 +18,17 @@ namespace FDLibNET {
 
     IndicesType m_indices = new IndexType[size];
 
+    //--------------------------------------------------------------------------
+
     public IndicesType Indices() {
       return m_indices;
     }
 
+    //--------------------------------------------------------------------------
+
     public int Size() { return Indices().Length; }
 
+    //--------------------------------------------------------------------------
     // Explicit indexing versions are range-checked and might throw. The sub-
     // script/indexer operator is however unchecked in STL-style.
     public IndexType Index(int index) {
@@ -35,6 +40,8 @@ namespace FDLibNET {
       return Indices()[index];
     }
 
+    //--------------------------------------------------------------------------
+
     public void SetIndex(int index, IndexType value) {
       if (index >= Size()) {
         throw new IndexOutOfRangeException(
@@ -43,6 +50,8 @@ namespace FDLibNET {
 
       m_indices[index] = value;
     }
+
+    //--------------------------------------------------------------------------
 
     public IndexType this[int key] {
       get {
@@ -56,11 +65,15 @@ namespace FDLibNET {
       }
     }
 
+    //--------------------------------------------------------------------------
+
     public void ApplyTransposition(int i, int j) {
       if (i != j) {
         (this[i], this[j]) = (this[j], this[i]);
       }
     }
+
+    //--------------------------------------------------------------------------
 
     public void SetIdentity() {
       for (int i = 0; i < Size(); ++i) {
@@ -68,11 +81,15 @@ namespace FDLibNET {
       }
     }
 
+    //--------------------------------------------------------------------------
+
     public void SetIdentity(int newSize) {
       m_indices = new IndexType[newSize];
       SetIdentity();
     }
-  
+
+    //--------------------------------------------------------------------------
+
     override public String ToString() {
       String result =
         new("PermutationSequence " + Indices().Length +
