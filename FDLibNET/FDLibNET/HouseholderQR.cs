@@ -194,21 +194,31 @@ namespace FDLibNET {
       return m_trans;
     }
 
+    //--------------------------------------------------------------------------
+
     void SetTrans(bool trans) {
       m_trans = trans;
     }
+
+    //--------------------------------------------------------------------------
 
     public int Length() {
       return m_length;
     }
 
+    //--------------------------------------------------------------------------
+
     public void SetLength(int length) {
       m_length = length;
     }
 
+    //--------------------------------------------------------------------------
+
     public void Transpose() {
       SetTrans(!m_trans);
     }
+
+    //--------------------------------------------------------------------------
 
     public VectorType EssentialVector(int k) {
       int start = k + m_shift + 1;
@@ -216,6 +226,8 @@ namespace FDLibNET {
 
       return MatrixBlock.ColumnTail(m_vectors, k, tail);
     }
+
+    //--------------------------------------------------------------------------
 
     public MatrixType ApplyOnTheLeft(MatrixType matrix) {
 
