@@ -6,7 +6,7 @@ namespace UnitTests;
 public class PermutationSequence_Indices {
 
     [Fact]
-    public void Test_HouseholderSequence_Trans_1() {
+    public void Test_PermutationSequence_Indices_1() {
       var seq = new PermutationSequence(0);
 
       Assert.Empty(seq.Indices());
