@@ -138,7 +138,7 @@ namespace FDLibNET {
 
     public static void MakeUpperTriangular(MatrixType matrix) {
       for (int i = 1; i < matrix.RowCount; ++i) 
-        for (int j = 0; j < i; ++j)
+        for (int j = 0; j < Math.Min(i, matrix.ColumnCount); ++j)
           matrix[i, j] = 0;
     }
 
