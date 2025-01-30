@@ -96,10 +96,10 @@ public class PermutationSequence_ApplyTransposition {
 
       seq.SetIdentity();
 
-      // Bubble sort (ascending). No changes.
+      // Bubble sort (descending).
       for (int n = seq.Indices().Length; n > 1; n--) {
         for (int i = 0; i < n - 1; i++) {
-          if (seq.Indices()[i] > seq.Indices()[i + 1]) {
+          if (seq.Indices()[i] < seq.Indices()[i + 1]) {
             seq.ApplyTransposition(i, i + 1);
           }
         } 
@@ -107,9 +107,10 @@ public class PermutationSequence_ApplyTransposition {
 
       // Verification.
       for (int i = 0; i < seq.Indices().Length; ++i) {
-        Assert.Equal(i, seq.Indices()[i]);
+        Assert.Equal(i, seq.Indices()[seqLength - i - 1]);
       }
     }
+
 
     //--------------------------------------------------------------------------
 
@@ -129,9 +130,18 @@ public class PermutationSequence_ApplyTransposition {
         } 
       }
 
+      // Bubble sort (ascending).
+      for (int n = seq.Indices().Length; n > 1; n--) {
+        for (int i = 0; i < n - 1; i++) {
+          if (seq.Indices()[i] > seq.Indices()[i + 1]) {
+            seq.ApplyTransposition(i, i + 1);
+          }
+        } 
+      }
+
       // Verification.
       for (int i = 0; i < seq.Indices().Length; ++i) {
-        Assert.Equal(i, seq.Indices()[seqLength - i - 1]);
+        Assert.Equal(i, seq.Indices()[i]);
       }
     }
 }
